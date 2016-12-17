@@ -14,20 +14,23 @@ class MoviesController < ApplicationController
   # end
 
 
-  def show
-    # params = {
-    #   # name: "the",
-    #   genre: ["action", "drama"],
-    # }
+
+  def index #Techinically the Def show
+    params = {
+      title: "the",
+      genre: ["action", "drama"],
+    }
 
     @movie = Movie.all
-    # @movie = @movie.where("title LIKE ?", "%#{params[:name]}%").all
+    @movie = @movie.where("lower(title) LIKE ?", "%#{params[:title].downcase}%").all
     params[:genre].each do |element|
       @movie = @movie.where("genre LIKE ?", "%#{element.titleize}%").all
     end
 
     render json: @movie
   end
+
+
 end
 
 def search(field, search_params)
