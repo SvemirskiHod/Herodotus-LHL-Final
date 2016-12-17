@@ -9,14 +9,11 @@
 require ('json')
 
 file = File.open('db/api_movie_call.json', "r")
-
-# initial_seeds = ActiveSupport::JSON.decode(File.read('./api_movie_call.json'))
 initial_seeds = JSON.parse(file.read)
 
 Movie.destroy_all
 
 initial_seeds["data"].each do |movie|
-  # byebug
   Movie.create!({
     title: movie["Title"],
     year: movie["Year"],
@@ -38,9 +35,7 @@ initial_seeds["data"].each do |movie|
     keywords: movie["keywords"],
     summary_text: movie["summary_text"]}
   )
-  # puts movie["Runtime"]
 end
-
 
 # title
 # year
