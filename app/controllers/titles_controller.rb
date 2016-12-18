@@ -7,9 +7,9 @@ class TitlesController < ApplicationController
   # end
 
   def index
-    puts params["name"]
+    params["name"] = params["name"].downcase
     @result = Movie.all
-    @result = @result.where("title LIKE ?", "%#{params["name"]}%").all
+    @result = @result.where("lower(title) LIKE ?", "%#{params["name"]}%").all
     render json: @result
   end
 
