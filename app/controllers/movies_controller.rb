@@ -4,7 +4,6 @@ class MoviesController < ApplicationController
   #   render json: Movie.all
   # end
 
-
   def index
     @movies = Movie.all
     render json: @movies

@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
 
   resources :movies, only: [:index, :show]
+  resources :titles, only: [:index, :show]
 end
