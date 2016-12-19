@@ -8,27 +8,31 @@ class MoviesController < ApplicationController
 
 
   def index
-    @movies = Movie.all
-    render json: @movies
+      @movies = Movie.all
+      render json: @movies
     # render json: search("genre", ["war", "drama"])
   end
 
 
+  def show
+    puts params
+    render json: Movie.all
+  end
 
-  # def index #Techinically the Def show
-  #   params = {
-  #     title: "the",
-  #     genre: ["action", "drama"],
-  #   }
+  def show #Techinically the Def show
+    # params = {
+    #   title: "the",
+    #   genre: ["action", "drama"],
+    # }
 
-  #   @movie = Movie.all
-  #   @movie = @movie.where("lower(title) LIKE ?", "%#{params[:title].downcase}%").all
-  #   params[:genre].each do |element|
-  #     @movie = @movie.where("genre LIKE ?", "%#{element.titleize}%").all
-  #   end
+    @movie = Movie.all
+    @movie = @movie.where("lower(title) LIKE ?", "%#{params[:title].downcase}%").all
+    params[:genre].each do |element|
+      @movie = @movie.where("genre LIKE ?", "%#{element.titleize}%").all
+    end
 
-  #   render json: @movie
-  # end
+    render json: @movie
+  end
 
 
 end
