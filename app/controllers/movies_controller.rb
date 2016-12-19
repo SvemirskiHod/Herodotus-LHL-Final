@@ -10,8 +10,6 @@ class MoviesController < ApplicationController
     # render json: search("genre", ["war", "drama"])
   end
 
-<<<<<<< HEAD
-
   def show
     puts params
     render json: Movie.all
