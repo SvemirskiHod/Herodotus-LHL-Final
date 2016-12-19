@@ -1,11 +1,8 @@
 class MoviesController < ApplicationController
 
-
-
   # def index
   #   render json: Movie.all
   # end
-
 
   def index
       @movies = Movie.all
@@ -13,6 +10,7 @@ class MoviesController < ApplicationController
     # render json: search("genre", ["war", "drama"])
   end
 
+<<<<<<< HEAD
 
   def show
     puts params
@@ -33,7 +31,6 @@ class MoviesController < ApplicationController
 
     render json: @movie
   end
-
 
 end
 
