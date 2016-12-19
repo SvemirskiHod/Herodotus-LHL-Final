@@ -6,6 +6,8 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
+    # @movies = @movies.where("genre LIKE ?", "%action%").all
+    # puts action
     render json: @movies
     # render json: search("genre", ["war", "drama"])
   end
