@@ -25,6 +25,7 @@ class MoviesController < ApplicationController
 
 #     render json: @movie
 #   end
+end
 
 def search(field, search_params)
     @result = Movie.all
