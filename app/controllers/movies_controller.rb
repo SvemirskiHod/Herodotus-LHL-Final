@@ -1,10 +1,11 @@
 class MoviesController < ApplicationController
 
   def index
-      @movies = Movie.all
-      render json: @movies
-  end
+    @movies = Movie.all
+    @movies = @movies.where("genre LIKE ?", "%#{params[:genre]}%").all
 
+    render json: @movies
+  end
 
 #   def show  # Will handle advanced searches
 
@@ -24,10 +25,6 @@ class MoviesController < ApplicationController
 
 #     render json: @movie
 #   end
-
-end
-
-
 
 def search(field, search_params)
     @result = Movie.all
