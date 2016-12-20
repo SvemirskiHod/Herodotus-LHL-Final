@@ -6,18 +6,28 @@ class MoviesController < ApplicationController
   end
 
 
-  def show #Techinically the Def show
+#   def show  # Will handle advanced searches
 
-    @movie = Movie.all
-    @movie = @movie.where("lower(title) LIKE ?", "%#{params[:title].downcase}%").all
-    params[:genre].each do |element|
-      @movie = @movie.where("genre LIKE ?", "%#{element.titleize}%").all
-    end
+#     title = params.title
+#     # genre = params.genre
+#     # keywords = params.keywords
+#     # date = params.date
 
-    render json: @movie
-  end
+#     @movie = Movie.all
+#     @movie = @movie.where("lower(title) LIKE ?", "%#{title.downcase}%").all
+
+#     # @movie = Movie.all
+#     # @movie = @movie.where("lower(title) LIKE ?", "%#{params[:title].downcase}%").all
+#     # params[:genre].each do |element|
+#     #   @movie = @movie.where("genre LIKE ?", "%#{element.titleize}%").all
+#     # end
+
+#     render json: @movie
+#   end
 
 end
+
+
 
 def search(field, search_params)
     @result = Movie.all
