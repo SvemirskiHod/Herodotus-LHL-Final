@@ -11,6 +11,20 @@ require ('json')
 file = File.open('db/api_movie_call.json', "r")
 initial_seeds = JSON.parse(file.read)
 
+def return_flat_array(parsed_array)
+  flat_array = []
+  parsed_array.each do |phrase|
+    if phrase.split.length == 1
+      flat_array << phrase
+    else
+      phrase.split.each do |word|
+       flat_array << word
+      end
+    end
+  end
+  return flat_array
+end
+
 Movie.destroy_all
 
 initial_seeds["data"].each do |movie|
@@ -32,7 +46,7 @@ initial_seeds["data"].each do |movie|
     metascore: movie["Metascore"],
     imdbrating: movie["imdbRating"],
     imdbid: movie["imdbID"],
-    keywords: movie["keywords"],
+    keywords: return_flat_array(movie["keywords"]),
     summary_text: movie["summary_text"]}
   )
 end
