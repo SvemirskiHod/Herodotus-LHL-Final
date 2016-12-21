@@ -13,48 +13,16 @@ class AdvSearchesController < ApplicationController
     @results = @results.where("lower(genre) LIKE ?", "%#{genre.downcase}%").all if genre != ""
     @results = @results.where("lower(released) LIKE ?", "%#{released.downcase}%").all if released != ""
 
+    movies = []
 
-# PLEASE DO NOT TOUCH
-    # def return_flat_array(parsed_array)
-    #   flat_array = []
-    #   parsed_array.each do |phrase|
-    #     if phrase.split.length == 1
-    #       flat_array << phrase
-    #     else
-    #       phrase.split.each do |word|
-    #        flat_array << word
-    #       end
-    #     end
-    #   end
-    #   return flat_array
-    # end
-
-    #   results = @results
-
-    # @results.each do |film|
-    #   flat_array = return_flat_array(JSON.parse(film.keywords))
-    #   if flat_array & user_submitted_keywords == []
-    #     results = results.destroy[film]
-    #   end
-    # end
-# PLEASE DO NOT TOUCH
-
-
-    # @results.each do |film|
-    #   result = nil
-    #   keywords = JSON.parse(film["keywords"])
-
-    #   puts keywords && user_submitted_keywords
-
-    # end
-
-    user_submitted_keywords.each do |keyword|
-      @results = @results.where("lower(keywords) = ?", "%#{keyword.downcase}%").all if keyword != ""
+    @results.each do |film|
+      keywords = JSON.parse(film["keywords"])
+      if !(user_submitted_keywords & keywords).empty?
+        movies << film
+      end
     end
 
-
-
-    render json: @results
+    render json: movies
   end
 
 
