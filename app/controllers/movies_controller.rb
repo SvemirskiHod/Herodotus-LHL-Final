@@ -2,7 +2,21 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
-    @movies = @movies.where("genre LIKE ?", "%#{params[:genre]}%").all
+
+    case params[:genre]
+    when 'Drama'
+      @movies = @movies.where("genre LIKE ?", "%Drama%").all
+    when 'Action'
+      @movies = @movies.where("genre LIKE ?", "%Action%").all
+    when 'Not about war'
+      @movies = @movies.where("genre != ?", "%War%").all
+    when 'Set in Japan'
+      @movies = @movies.where("setting_location LIKE ?", "%Japan%").all
+    when 'Vintage'
+      @movies = @movies.where("year <= ?", 1970).all
+    when 'Before CE'
+      @movies = @movies.where("start_ad_bc = 'BC'").all
+    end
 
     render json: @movies
   end
