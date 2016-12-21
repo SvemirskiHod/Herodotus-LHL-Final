@@ -17,9 +17,16 @@ class AdvSearchesController < ApplicationController
 
     @results.each do |film|
       keywords = JSON.parse(film["keywords"])
-      if !(user_submitted_keywords & keywords).empty?
-        movies << film
+      puts keywords.class
+      puts user_submitted_keywords.class
+      user_submitted_keywords.each do |keyword|
+        if keywords.include?(keyword)
+            movies << film
+        end
       end
+      # if keywords.include?(user_submitted_keywords)
+      #   movies << film
+      # end
     end
 
     render json: movies
