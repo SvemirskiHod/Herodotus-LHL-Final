@@ -47,7 +47,13 @@ initial_seeds["data"].each do |movie|
     imdbrating: movie["imdbRating"],
     imdbid: movie["imdbID"],
     keywords: return_flat_array(movie["keywords"]),
-    summary_text: movie["summary_text"]}
+    set_start_year: nil,
+    start_ad_bc: nil,
+    set_start_year_accurate: nil,
+    set_end_year: nil,
+    end_ad_bc: nil,
+    set_end_year_accurate: nil,
+    setting_location: nil}
   )
 end
 
