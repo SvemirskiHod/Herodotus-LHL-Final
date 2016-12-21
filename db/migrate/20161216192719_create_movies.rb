@@ -19,7 +19,13 @@ class CreateMovies < ActiveRecord::Migration[5.0]
       t.integer :imdbrating
       t.string :imdbid
       t.text :keywords
-      t.text :summary_text
+      t.string :set_start_year
+      t.string :start_ad_bc
+      t.string :set_start_year_accurate
+      t.string :set_end_year
+      t.string :end_ad_bc
+      t.string :set_end_year_accurate
+      t.string :setting_location
       t.timestamps
     end
   end
