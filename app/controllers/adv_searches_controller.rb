@@ -40,14 +40,17 @@ class AdvSearchesController < ApplicationController
 # PLEASE DO NOT TOUCH
 
 
+    # @results.each do |film|
+    #   result = nil
+    #   keywords = JSON.parse(film["keywords"])
+
+    #   puts keywords && user_submitted_keywords
+
+    # end
 
     user_submitted_keywords.each do |keyword|
-      @results = @results.where("lower(keywords) LIKE ?", "%#{keyword.downcase}%").all if keyword != ""
+      @results = @results.where("lower(keywords) = ?", "%#{keyword.downcase}%").all if keyword != ""
     end
-
-
-
-
 
 
 
