@@ -18,6 +18,9 @@ class MoviesController < ApplicationController
       @movies = @movies.where("start_ad_bc = 'BC'").all
     when 'Animation'
       @movies = @movies.where("genre LIKE ?", "%Animation%").all
+    when 'World War 2'
+      @movies = @movies.where("genre LIKE ?", "%War%").all
+      @movies = @movies.where("set_start_year >= ?", 1939).where("set_end_year <= ?", 1945).all
     end
 
     render json: @movies
