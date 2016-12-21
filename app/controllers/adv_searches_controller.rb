@@ -24,5 +24,4 @@ class AdvSearchesController < ApplicationController
     render json: movies
   end
 
-
 end
