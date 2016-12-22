@@ -4,7 +4,7 @@ class AdvSearchesController < ApplicationController
 
     title = params["title"] if params["title"]
     genre = params["genre"] if params["genre"]
-    user_submitted_keywords = params["keywords"].split if params["keywords"]
+    user_submitted_keywords = params["keywords"].split.map!(&:downcase) if params["keywords"]
     released = params["date"] if params["date"]
 
 
