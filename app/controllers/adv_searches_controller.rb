@@ -16,7 +16,7 @@ class AdvSearchesController < ApplicationController
     @results = @results.where("lower(genre) LIKE ?", "%#{genre.downcase}%").all if genre != ""
     @results = @results.where("set_start_year = #{set_start_year}").all if set_start_year != ""
     @results = @results.where("start_ad_bc = '#{era}'").all if era != ""
-    @results = @results.where("lower(setting_location) LIKE ?", "%#{location.downcase}").all if location != ""
+    @results = @results.where("lower(setting_location) LIKE ?", "%#{location.downcase}%").all if location != ""
     movies = []
 
     @results.each do |film|
