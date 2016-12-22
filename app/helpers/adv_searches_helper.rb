@@ -1,0 +1,2 @@
+module AdvSearchesHelper
+end

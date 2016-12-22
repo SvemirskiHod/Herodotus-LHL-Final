@@ -33,11 +33,16 @@ ActiveRecord::Schema.define(version: 20161216192719) do
     t.integer  "metascore"
     t.integer  "imdbrating"
     t.string   "imdbid"
-    t.string   "type"
     t.text     "keywords"
-    t.text     "summary_text"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "set_start_year"
+    t.string   "start_ad_bc"
+    t.string   "set_start_year_accurate"
+    t.integer  "set_end_year"
+    t.string   "end_ad_bc"
+    t.string   "set_end_year_accurate"
+    t.string   "setting_location"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
 end
