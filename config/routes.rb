@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :movies, only: [:index, :show]
   resources :titles, only: [:index, :show]
   resources :adv_searches, only: [:index, :show]
+  resources :users, only: [:create]
 end

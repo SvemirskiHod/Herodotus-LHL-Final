@@ -14,7 +14,7 @@ class MoviesController < ApplicationController
       @movies = @movies.where("setting_location LIKE ?", "%Japan%").all
     when 'Vintage'
       @movies = @movies.where("year <= ?", 1970).all
-    when 'Before CE'
+    when 'Before Common Era'
       @movies = @movies.where("start_ad_bc = 'BC'").all
     when 'Animation'
       @movies = @movies.where("genre LIKE ?", "%Animation%").all
