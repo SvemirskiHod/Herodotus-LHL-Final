@@ -1,6 +1,7 @@
 class AdvSearchesController < ApplicationController
 
   def index  # Will handle advanced searches
+    puts params
 
     title = params["title"] if params["title"]
     genre = params["genre"] if params["genre"]
