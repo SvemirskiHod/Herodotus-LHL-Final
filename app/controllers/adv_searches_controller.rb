@@ -15,17 +15,14 @@ class AdvSearchesController < ApplicationController
     @results = @results.where("lower(genre) LIKE ?", "%#{genre.downcase}%").all if genre != ""
     @results = @results.where("lower(setting_location) LIKE ?", "%#{location.downcase}%").all if location != ""
     @results = @results.where("start_ad_bc = '#{era}'").all if era != ""
-<<<<<<< HEAD
-=======
     @results = @results.where("lower(setting_location) LIKE ?", "%#{location.downcase}%").all if location != ""
     movies = []
->>>>>>> 62c29da5b14da77e1a7291c5c7104398979b0109
 
 
     if (era.downcase == 'bc')
       @results = @results.where("set_start_year = #{set_start_year}").all if set_start_year != ""
     else
-        @movies = @movies.where("set_start_year >= ?", set_start_year.to_i).where("set_end_year <= ?", set_start_year.to_i).all
+      @movies = @movies.where("set_start_year >= ?", set_start_year.to_i).where("set_end_year <= ?", set_start_year.to_i).all
     end
 
     movies = []
