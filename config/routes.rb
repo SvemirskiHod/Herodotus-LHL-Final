@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :user, only: []
+  devise_for :user, only: [:create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   namespace :v1, defaults: {format: :json} do

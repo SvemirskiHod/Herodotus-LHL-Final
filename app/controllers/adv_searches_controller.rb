@@ -1,7 +1,6 @@
 class AdvSearchesController < ApplicationController
 
   def index  # Will handle advanced searches
-    puts params
 
     title = params["title"] if params["title"]
     genre = params["genre"] if params["genre"]
@@ -19,11 +18,11 @@ class AdvSearchesController < ApplicationController
     movies = []
 
 
-    if (era.downcase == 'bc')
-      @results = @results.where("set_start_year = #{set_start_year}").all if set_start_year != ""
-    else
-      @movies = @movies.where("set_start_year >= ?", set_start_year.to_i).where("set_end_year <= ?", set_start_year.to_i).all
-    end
+    # if (era.downcase == 'bc')
+    #   @results = @results.where("set_start_year = #{set_start_year}").all if set_start_year != ""
+    # else
+    #   @results = @results.where("set_start_year >= ?", set_start_year.to_i).where("set_end_year <= ?", set_start_year.to_i).all
+    # end
 
     movies = []
     @results.each do |film|
