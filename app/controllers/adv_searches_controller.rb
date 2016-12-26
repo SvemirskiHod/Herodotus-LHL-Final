@@ -1,6 +1,7 @@
 class AdvSearchesController < ApplicationController
 
   def index  # Will handle advanced searches
+    puts params
 
     title = params["title"] if params["title"]
     genre = params["genre"] if params["genre"]
@@ -14,6 +15,11 @@ class AdvSearchesController < ApplicationController
     @results = @results.where("lower(genre) LIKE ?", "%#{genre.downcase}%").all if genre != ""
     @results = @results.where("lower(setting_location) LIKE ?", "%#{location.downcase}%").all if location != ""
     @results = @results.where("start_ad_bc = '#{era}'").all if era != ""
+<<<<<<< HEAD
+=======
+    @results = @results.where("lower(setting_location) LIKE ?", "%#{location.downcase}%").all if location != ""
+    movies = []
+>>>>>>> 62c29da5b14da77e1a7291c5c7104398979b0109
 
 
     if (era.downcase == 'bc')
