@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 20161225225740) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username"
     t.string   "email"
     t.string   "password"
     t.string   "password_confirmation"
@@ -62,6 +61,7 @@ ActiveRecord::Schema.define(version: 20161225225740) do
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.string   "access_token"
+    t.string   "username"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
