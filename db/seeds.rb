@@ -302,21 +302,20 @@ Movie.create!([
 
 ])
 
-# User.create!([
-#   {
-#   username: 'Jeffrey',
-#   email: 'jeffrey@test.com',
-#   password: 'password',
-#   password_confirmation: 'password'},
-#   {
-#   username: 'Joao',
-#   email: 'joao@test.com',
-#   password: 'password',
-#   password_confirmation: 'password'},
-#   {
-#   username: 'Ryo',
-#   email: 'ryo@test.com',
-#   password: 'password',
-#   password_confirmation: 'password'}
-
-# ])
+User.create!([
+  {
+  username: 'Jeffrey',
+  email: 'jeffrey@test.com',
+  password: 'password',
+  password_confirmation: 'password'},
+  {
+  username: 'Joao',
+  email: 'joao@test.com',
+  password: 'password',
+  password_confirmation: 'password'},
+  {
+  username: 'Ryo',
+  email: 'ryo@test.com',
+  password: 'password',
+  password_confirmation: 'password'}
+])

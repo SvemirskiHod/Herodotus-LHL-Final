@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
   }
-
-  # root to: "movies#index"
 
   resources :movies, only: [:index, :show]
   resources :titles, only: [:index, :show]
   resources :adv_searches, only: [:index, :show]
-  # resources :users
 end
