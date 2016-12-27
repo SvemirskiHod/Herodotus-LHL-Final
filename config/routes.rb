@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :user, only: [:create]
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
 
-  namespace :v1, defaults: {format: :json} do
-    resource :login, only: [:create], controller: :sessions
-  end
+  root to: "movies#index"
 
   resources :movies, only: [:index, :show]
   resources :titles, only: [:index, :show]
   resources :adv_searches, only: [:index, :show]
-  resources :users, only: [:create]
+  # resources :users
 end

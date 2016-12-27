@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161225225740) do
+ActiveRecord::Schema.define(version: 20161226224233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,10 +34,10 @@ ActiveRecord::Schema.define(version: 20161225225740) do
     t.integer  "imdbrating"
     t.string   "imdbid"
     t.text     "keywords"
-    t.integer  "set_start_year"
+    t.string   "set_start_year"
     t.string   "start_ad_bc"
     t.string   "set_start_year_accurate"
-    t.integer  "set_end_year"
+    t.string   "set_end_year"
     t.string   "end_ad_bc"
     t.string   "set_end_year_accurate"
     t.string   "setting_location"
@@ -46,11 +46,7 @@ ActiveRecord::Schema.define(version: 20161225225740) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email"
-    t.string   "password"
-    t.string   "password_confirmation"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -60,8 +56,8 @@ ActiveRecord::Schema.define(version: 20161225225740) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.string   "access_token"
-    t.string   "username"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
