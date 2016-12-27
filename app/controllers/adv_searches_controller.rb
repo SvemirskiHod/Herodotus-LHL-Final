@@ -17,12 +17,11 @@ class AdvSearchesController < ApplicationController
     @results = @results.where("lower(setting_location) LIKE ?", "%#{location.downcase}%").all if location != ""
     movies = []
 
-
-    # if (era.downcase == 'bc')
-    #   @results = @results.where("set_start_year = #{set_start_year}").all if set_start_year != ""
-    # else
-    #   @results = @results.where("set_start_year >= ?", set_start_year.to_i).where("set_end_year <= ?", set_start_year.to_i).all
-    # end
+    if (era == 'BC')
+      @results = @results.where("set_start_year = #{set_start_year}").all if set_start_year != ""
+    else
+      @results = @results.where("set_start_year >= ?", set_start_year).where("set_end_year <= ?", set_start_year).all
+    end
 
     movies = []
     @results.each do |film|

@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'rack-cors', :require => 'rack/cors'
 gem 'devise'
-gem 'active_model_serializers', '~> 0.10.0'
+# gem 'active_model_serializers', '~> 0.10.0'
 
 
 # Use Capistrano for deployment

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  root to: "movies#index"
+  # root to: "movies#index"
 
   resources :movies, only: [:index, :show]
   resources :titles, only: [:index, :show]
