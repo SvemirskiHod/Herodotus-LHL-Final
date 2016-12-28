@@ -1,11 +1,14 @@
 class Users::SessionsController < Devise::SessionsController
 # before_action :configure_sign_in_params, only: [:create]
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   def create
-      @user = User.find_by(email: params[:username])
+    @user = User.find_by(email: params[:username])
+    if @user.valid_password?(params[:password])
       render :json => {"signed_in" => true, "user" => @user}.to_json()
-      puts "test #{@user}"
+    else
+      render :json => {"signed_in" => false}
+    end
   end
   # GET /resource/sign_in
   # def new

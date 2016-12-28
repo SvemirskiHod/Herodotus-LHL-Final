@@ -15,6 +15,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       password: params[:password],
       password_confirmation: params[:password_confirmation]
     )
+
+    if @user.save
+      render :json => {"signed_in" => true, "user" => @user}.to_json()
+    end
   end
 
   # GET /resource/edit
