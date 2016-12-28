@@ -6,21 +6,21 @@ class AdvSearchesController < ApplicationController
     genre = params["genre"] if params["genre"]
     user_submitted_keywords = params["keywords"].split.map!(&:downcase) if params["keywords"]
     set_start_year = params["date"] if params["date"]
-    location = params["location"]
-    era = params["era"]
+    location = params["location"] if params["location"]
+    era = params["era"] if params["era"]
 
     @results = Movie.all
-    @results = @results.where("lower(title) LIKE ?", "%#{title.downcase}%").all if title != ""
-    @results = @results.where("lower(genre) LIKE ?", "%#{genre.downcase}%").all if genre != ""
-    @results = @results.where("lower(setting_location) LIKE ?", "%#{location.downcase}%").all if location != ""
-    @results = @results.where("start_ad_bc = '#{era}'").all if era != ""
-    @results = @results.where("lower(setting_location) LIKE ?", "%#{location.downcase}%").all if location != ""
+    @results = @results.where("lower(title) LIKE ?", "%#{title.downcase}%").all if title
+    @results = @results.where("lower(genre) LIKE ?", "%#{genre.downcase}%").all if genre
+    @results = @results.where("lower(setting_location) LIKE ?", "%#{location.downcase}%").all if location
+    @results = @results.where("start_ad_bc = '#{era}'").all if era
+    @results = @results.where("lower(setting_location) LIKE ?", "%#{location.downcase}%").all if location
     movies = []
 
     if (era == 'BC')
-      @results = @results.where("set_start_year = #{set_start_year}").all if set_start_year != ""
+      @results = @results.where("set_start_year = #{set_start_year}").all if set_start_year
     else
-      @results = @results.where("set_start_year >= ?", set_start_year).where("set_end_year <= ?", set_start_year).all
+      @results = @results.where("set_start_year >= ?", set_start_year).where("set_end_year <= ?", set_start_year).all if set_start_year
     end
 
     movies = []
@@ -29,8 +29,12 @@ class AdvSearchesController < ApplicationController
       if (user_submitted_keywords - keywords).empty?
         movies << film
       end
+    end if user_submitted_keywords
+    if movies.size > 0
+      render json: movies
+    else
+      render json: @results
     end
-    render json: movies
   end
 
 end
