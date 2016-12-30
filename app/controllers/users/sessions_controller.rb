@@ -7,7 +7,7 @@ class Users::SessionsController < Devise::SessionsController
     if @user.valid_password?(params[:password])
       render :json => {"signed_in" => true, "user" => @user}.to_json()
     else
-      render :json => {"signed_in" => false}
+      render :json => {"signed_in" => false}.to_json()
     end
   end
   # GET /resource/sign_in

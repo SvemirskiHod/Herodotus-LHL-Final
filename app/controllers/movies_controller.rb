@@ -26,6 +26,11 @@ class MoviesController < ApplicationController
     render json: @movies
   end
 
+  def show
+    @movie = Movie.find(params[:id])
+    render json: @movie.comments
+  end
+
 #   def show  # Will handle advanced searches
 
 #     title = params.title

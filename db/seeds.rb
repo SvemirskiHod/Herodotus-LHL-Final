@@ -316,3 +316,18 @@ User.create!([
   password: 'password',
   password_confirmation: 'password'}
 ])
+
+Comment.create!([
+  {
+  user_id: 1,
+  movie_id: 1,
+  comment: 'this movie sucks ass 11111111111!!!!!!!111111'},
+  {
+  user_id: 1,
+  movie_id: 1,
+  comment: '2nd comment'},
+  {
+  user_id: 1,
+  movie_id: 1,
+  comment: '3rd comment'},
+])
