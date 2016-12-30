@@ -4,6 +4,7 @@ class CreateComments < ActiveRecord::Migration[5.0]
       t.references :user
       t.references :movie
       t.text :comment
+      t.string :username
 
       t.timestamps
     end

@@ -301,33 +301,41 @@ Movie.create!([
   {title: "The Dish", year: 2000, rated: "PG-13", released: "04 May 2001", runtime: "101 min", genre: "Comedy, Drama, History", director: "Rob Sitch", writer: "Santo Cilauro (conceived and written by), Tom Gleisner (conceived and written by), Jane Kennedy (conceived and written by), Rob Sitch (conceived and written by)", actors: "Sam Neill, Billy Mitchell, Roz Hammond, Christopher-Robin Street", plot: "A remote Australian antenna, populated by quirky characters, plays a key role in the first Apollo moon landing.", language: "English", country: "Australia", awards: "3 wins & 11 nominations.", poster: "https://images-na.ssl-images-amazon.com/images/M/MV5BMTI1MDc0ODkzN15BMl5BanBnXkFtZTYwNzY5Nzc5._V1_SX300.jpg", metascore: 74, imdbrating: 7, imdbid: "tt0205873", keywords: "[\"nasa\", \"moon\", \"walk\", \"satellite\", \"dish\", \"australia\", \"american\", \"man\", \"american\", \"abroad\", \"visit\", \"opening\", \"a\", \"door\", \"falling\", \"in\", \"love\", \"black\", \"comedy\", \"asking\", \"someone\", \"out\", \"on\", \"a\", \"date\", \"two\", \"word\", \"title\", \"cricket\", \"the\", \"game\", \"wind\", \"gust\", \"walkie\", \"talkie\", \"television\", \"shyness\", \"reporter\", \"prime\", \"minister\", \"mayor\", \"impersonation\", \"flashback\", \"deception\", \"conspiracy\", \"band\", \"music\", \"ambassador\", \"radio\", \"telescope\", \"outer\", \"space\", \"blackout\", \"scientist\", \"1960s\", \"security\", \"guard\", \"apollo\", \"11\", \"small\", \"town\", \"moon\", \"landing\", \"based\", \"on\", \"true\", \"story\", \"independent\", \"film\"]", set_start_year: 1969, start_ad_bc: "AD", set_start_year_accurate: "yes", set_end_year: 1969, end_ad_bc: "AD", set_end_year_accurate: "yes", setting_location: "Australia, Space"}
 
 ])
-
-User.create!([
-  {
+@user1 = User.create!({
+  username: 'jeff',
   email: 'jeffrey@test.com',
   password: 'password',
-  password_confirmation: 'password'},
-  {
+  password_confirmation: 'password',
+})
+
+@user2 = User.create!({
+  username: 'joao',
   email: 'joao@test.com',
   password: 'password',
-  password_confirmation: 'password'},
-  {
+  password_confirmation: 'password',
+})
+
+@user3 = User.create!({
+  username: 'ryo',
   email: 'ryo@test.com',
   password: 'password',
-  password_confirmation: 'password'}
-])
+  password_confirmation: 'password',
+})
 
 Comment.create!([
   {
-  user_id: 1,
+  user: @user1,
+  username: @user1.username,
   movie_id: 1,
   comment: 'this movie sucks ass 11111111111!!!!!!!111111'},
   {
-  user_id: 1,
+  user: @user1,
+  username: @user1.username,
   movie_id: 1,
   comment: '2nd comment'},
   {
-  user_id: 1,
+  user: @user1,
+  username: @user1.username,
   movie_id: 1,
   comment: '3rd comment'},
 ])

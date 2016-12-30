@@ -28,6 +28,8 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
+    # puts "teststest #{@movie.comments.user}"
+    # puts "test #{@movie.comments.username}"
     render json: @movie.comments
   end
 
