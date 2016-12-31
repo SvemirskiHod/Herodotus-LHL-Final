@@ -7,6 +7,8 @@ class CommentsController < ApplicationController
       comment: params[:comment],
       username: params[:username],
     )
+
+    render json: {"success": true}
   end
 
 end
