@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
   def index
     @movies = Movie.all
 
-    case params[:genre]
+    case params[:category]
     when 'Drama'
       @movies = @movies.where("genre LIKE ?", "%Drama%").all
     when 'Action'
