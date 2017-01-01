@@ -2,12 +2,12 @@ class AdvSearchesController < ApplicationController
 
   def index  # Will handle advanced searches
 
-    title = params["title"] if params["title"]
-    genre = params["genre"] if params["genre"]
-    user_submitted_keywords = params["keywords"].split.map!(&:downcase) if params["keywords"]
-    set_start_year = params["date"] if params["date"]
-    location = params["location"] if params["location"]
-    era = params["era"] if params["era"]
+    title = params["title"] if params["title"] != ''
+    genre = params["genre"] if params["genre"] != ''
+    user_submitted_keywords = params["keywords"].split.map!(&:downcase) if params["keywords"] != ''
+    set_start_year = params["date"] if params["date"] != ''
+    location = params["location"] if params["location"] != ''
+    era = params["era"] if params["era"] != ''
 
     @results = Movie.all
     @results = @results.where("lower(title) LIKE ?", "%#{title.downcase}%").all if title
