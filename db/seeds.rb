@@ -339,3 +339,21 @@ Comment.create!([
   movie_id: 1,
   comment: '3rd comment'},
 ])
+
+Note.create!({
+  user: @user1,
+  movie_id: 1,
+  note: 'never going to watch this movie'
+})
+
+Note.create!({
+  user: @user2,
+  movie_id: 1,
+  note: 'this movie is pretty good'
+})
+
+Note.create!({
+  user: @user1,
+  movie_id: 1,
+  note: 'friend says this is good. maybe i should watch it'
+})

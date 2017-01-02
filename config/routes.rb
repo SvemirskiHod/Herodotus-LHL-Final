@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :movies, only: [:index, :show] do
     resource :comments
+    resource :notes
   end
 
   resources :titles, only: [:index, :show]
