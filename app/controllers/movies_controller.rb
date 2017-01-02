@@ -26,6 +26,30 @@ class MoviesController < ApplicationController
     render json: @movies
   end
 
+  # def index
+  #   @movies = Movie.all
+  #   render json: @movies
+  #   # render json: search("genre", ["war", "drama"])
+  # end
+
+
+  #
+  # def index #Techinically the Def show
+  #   params = {
+  #     title: "the",
+  #     genre: ["action", "drama"],
+  #   }
+  #
+  #   @movie = Movie.all
+  #   @movie = @movie.where("lower(title) LIKE ?", "%#{params[:title].downcase}%").all
+  #   params[:genre].each do |element|
+  #     @movie = @movie.where("genre LIKE ?", "%#{element.titleize}%").all
+  #   end
+  #
+  #   render json: @movie
+  # end
+
+
   def show
     @movie = Movie.find(params[:id])
     render json: {comments: @movie.comments}
@@ -46,6 +70,7 @@ class MoviesController < ApplicationController
 #     # params[:genre].each do |element|
 #     #   @movie = @movie.where("genre LIKE ?", "%#{element.titleize}%").all
 #     # end
+
 
 #     render json: @movie
 
