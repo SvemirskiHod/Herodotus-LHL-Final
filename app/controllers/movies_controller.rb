@@ -50,6 +50,10 @@ class MoviesController < ApplicationController
   # end
 
 
+  def show
+    @movie = Movie.find(params[:id])
+    render json: {comments: @movie.comments}
+  end
 
 #   def show  # Will handle advanced searches
 

@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161226224233) do
+ActiveRecord::Schema.define(version: 20170101233425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "movie_id"
+    t.text     "comment"
+    t.string   "username"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_comments_on_movie_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
 
   create_table "movies", force: :cascade do |t|
     t.string   "title"
@@ -34,10 +45,10 @@ ActiveRecord::Schema.define(version: 20161226224233) do
     t.integer  "imdbrating"
     t.string   "imdbid"
     t.text     "keywords"
-    t.integer   "set_start_year"
+    t.integer  "set_start_year"
     t.string   "start_ad_bc"
     t.string   "set_start_year_accurate"
-    t.integer   "set_end_year"
+    t.integer  "set_end_year"
     t.string   "end_ad_bc"
     t.string   "set_end_year_accurate"
     t.string   "setting_location"
@@ -45,7 +56,18 @@ ActiveRecord::Schema.define(version: 20161226224233) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "notes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "movie_id"
+    t.text     "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_notes_on_movie_id", using: :btree
+    t.index ["user_id"], name: "index_notes_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
+    t.string   "username",               default: "", null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
