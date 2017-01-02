@@ -28,10 +28,7 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
-    @user = User.find(params[:userID])
-    puts "testtsest #{@movie.users}"
-    puts "Teststest #{@user.notes.movies}"
-    render json: {notes: @movie.users, comments: @movie.comments}
+    render json: {comments: @movie.comments}
   end
 
 #   def show  # Will handle advanced searches

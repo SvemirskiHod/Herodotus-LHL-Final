@@ -1,8 +1,10 @@
 class NotesController < ApplicationController
 
   def show
-    @user = User.find(params[:user_id])
-    puts "teststestetsete"
+    # @user = User.find(params[:user_id])
+    @movie = Movie.find(params[:movie_id])
+    # puts "teststestetsete #{@movie.notes}"
+    render json: {notes: @movie.notes}
   end
 
   def create
