@@ -1,10 +1,10 @@
 class NotesController < ApplicationController
+  def index
+  end
 
   def show
-    @movie = Movie.find(params[:movie_id])
-    @user = User.find(params[:user_id])
-    puts "testsetst #{@user.notes}"
-    render json: {notes: @movie.notes}
+    @notes = Note.where(movie_id: params[:movie_id]).where(user_id: params[:user_id]).all
+    render json: {notes: @notes}
   end
 
   def create

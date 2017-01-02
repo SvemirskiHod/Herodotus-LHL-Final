@@ -9,5 +9,4 @@ class CommentsController < ApplicationController
     )
     render json: {type: 'comment', new_comment: @comment}
   end
-
 end
