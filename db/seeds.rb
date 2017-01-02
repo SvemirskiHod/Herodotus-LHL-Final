@@ -324,17 +324,17 @@ Movie.create!([
 
 Comment.create!([
   {
-  user: @user1,
+  user_id: @user1.id,
   username: @user1.username,
   movie_id: 1,
   comment: 'this movie sucks ass 11111111111!!!!!!!111111'},
   {
-  user: @user1,
+  user_id: @user1.id,
   username: @user1.username,
   movie_id: 1,
   comment: '2nd comment'},
   {
-  user: @user1,
+  user_id: @user1.id,
   username: @user1.username,
   movie_id: 1,
   comment: '3rd comment'},
