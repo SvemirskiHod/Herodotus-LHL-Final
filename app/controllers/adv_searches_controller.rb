@@ -1,5 +1,4 @@
 class AdvSearchesController < ApplicationController
-
   def index  # Will handle advanced searches
 
     title = params["title"] if params["title"] != ''
@@ -30,11 +29,28 @@ class AdvSearchesController < ApplicationController
         movies << film
       end
     end if user_submitted_keywords
-    if movies.size > 0
-      render json: movies
-    else
-      render json: @results
-    end
-  end
 
+    if (movies.length > 0)
+      @results = movies
+    end
+
+    # CODE THAT PUTS THE RESULTS IN CHRONOLOGICAL ORDER
+    bcArray = []
+    adArray = []
+
+    @results.each do |film|
+      if (film.start_ad_bc == 'BC')
+        bcArray << film
+      elsif (film.start_ad_bc == 'AD')
+        adArray << film
+      end
+    end
+
+    adArray = adArray.sort { |a,b| a.set_start_year.to_i <=> b.set_start_year.to_i }
+    bcArray = bcArray.sort { |a,b| b.set_start_year.to_i <=> a.set_start_year.to_i }
+    @results = bcArray + adArray
+    # END OF CODE
+    render json: @results
+
+  end
 end
