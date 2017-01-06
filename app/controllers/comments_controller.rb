@@ -9,4 +9,12 @@ class CommentsController < ApplicationController
     )
     render json: {type: 'comment', new_comment: @comment}
   end
+
+  def destroy
+    @movie = Movie.find(params[:movie_id])
+    @comment = @movie.comments.find(params[:id])
+    @comment.destroy
+
+    render json: {comments: @movie.comments}
+  end
 end
