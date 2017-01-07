@@ -14,15 +14,12 @@ class CommentsController < ApplicationController
     @movie = Movie.find(params[:movie_id])
     @comment = @movie.comments.find(params[:id])
     @comment.destroy
-
     render json: {comments: @movie.comments}
   end
 
   def update
     @movie = Movie.find(params[:movie_id])
     Comment.find(params[:id]).update(comment: params[:comment])
-    # @comment.update(comment: params[:comment])
-
     render json: {type: 'editedComment', comments: @movie.comments.order(id: :asc)}
   end
 end
