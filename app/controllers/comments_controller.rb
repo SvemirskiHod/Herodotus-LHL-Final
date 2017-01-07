@@ -20,6 +20,6 @@ class CommentsController < ApplicationController
   def update
     @movie = Movie.find(params[:movie_id])
     Comment.find(params[:id]).update(comment: params[:comment])
-    render json: {type: 'editedComment', comments: @movie.comments.order(id: :asc)}
+    render json: {type: 'editedComment', comments: @movie.comments}
   end
 end
