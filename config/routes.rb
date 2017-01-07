@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   }
 
   resources :movies, only: [:index, :show] do
-    resources :comments, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy, :update]
     resources :users do
       resource :notes
     end
