@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
   }
 
-  resources :movies, only: [:index, :show] do
+  resources :movies, only: [:index, :show, :create] do
     resources :comments, only: [:create, :destroy, :update]
     resources :users do
       resources :notes

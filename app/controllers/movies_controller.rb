@@ -30,4 +30,34 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     render json: {comments: @movie.comments}
   end
+
+  def create
+    # Movie.create({
+    #   title:
+    #   year:
+    #   rated:
+    #   released:
+    #   runtime:
+    #   genre:
+    #   director:
+    #   writer:
+    #   actors:
+    #   plot:
+    #   language:
+    #   country:
+    #   awards:
+    #   poster:
+    #   metascore:
+    #   imdbrating:
+    #   imdbid:
+    #   keywords:
+    #   set_start_year:
+    #   start_ad_bc:
+    #   set_start_year_accurate:
+    #   set_end_year:
+    #   end_ad_bc:
+    #   set_end_year_accurate:
+    #   setting_location:
+    # })
+  end
 end
