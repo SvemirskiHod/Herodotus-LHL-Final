@@ -32,32 +32,31 @@ class MoviesController < ApplicationController
   end
 
   def create
-    # Movie.create({
-    #   title:
-    #   year:
-    #   rated:
-    #   released:
-    #   runtime:
-    #   genre:
-    #   director:
-    #   writer:
-    #   actors:
-    #   plot:
-    #   language:
-    #   country:
-    #   awards:
-    #   poster:
-    #   metascore:
-    #   imdbrating:
-    #   imdbid:
-    #   keywords:
-    #   set_start_year:
-    #   start_ad_bc:
-    #   set_start_year_accurate:
-    #   set_end_year:
-    #   end_ad_bc:
-    #   set_end_year_accurate:
-    #   setting_location:
-    # })
+    Movie.create(
+      title: params[:title],
+      year: params[:releaseYear],
+      rated: params[:rating],
+      released: params[:releaseDate],
+      runtime: params[:runtime],
+      genre: params[:genre],
+      director: params[:director],
+      writer: params[:writer],
+      actors: params[:actors],
+      plot: params[:plot],
+      language: params[:language],
+      country: params[:country],
+      awards: params[:awards],
+      poster: params[:poster],
+      metascore: params[:metascore],
+      imdbrating: params[:imdbrating],
+      keywords: params[:keywords],
+      set_start_year: params[:startYear],
+      start_ad_bc: params[:startADBC],
+      set_start_year_accurate: params[:startAccurate],
+      set_end_year: params[:endYear],
+      end_ad_bc: params[:endADBC],
+      set_end_year_accurate: params[:endAccurate],
+      setting_location: params[:setting],
+    )
   end
 end
