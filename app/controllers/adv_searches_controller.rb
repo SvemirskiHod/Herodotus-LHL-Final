@@ -17,7 +17,6 @@ class AdvSearchesController < ApplicationController
     @results = @results.where("lower(setting_location) LIKE ?", "%#{location.downcase}%").all if location
     @results = @results.where("start_ad_bc = '#{era}'").all if era
     @results = @results.where("lower(setting_location) LIKE ?", "%#{location.downcase}%").all if location
-    movies = []
 
     if (era == 'BC')
       @results = @results.where("set_start_year = #{set_start_year}").all if set_start_year
@@ -26,14 +25,17 @@ class AdvSearchesController < ApplicationController
     end
 
 
-    # CODE THAT RETURNS FILMS IN A SPECIFIC RANGE
-    if (era == 'AD')
-      @results = @results.where("set_start_year >= ?", start_date).where("set_start_year <= ?", end_date).all if (start_date && end_date)
+    # CODE THAT RETURNS FILMS IN A SPECIFIC RANGE - HERE COMES THE CHEESE
+    end_date_films = []
+    start_date_films = []
+    if (era == 'BC')
+      start_date_films = @results.where("set_start_year <= ?", start_date).where("set_start_year >= ?", end_date).all if (start_date && end_date)
+      end_date_films = @results.where("set_end_year <= ?", start_date).where("set_end_year >= ?", end_date).all if (start_date && end_date)
     else
-      @results = @results.where("set_start_year <= ?", start_date).where("set_start_year >= ?", end_date).all if (start_date && end_date)
+      start_date_films = @results.where("set_start_year >= ?", start_date).where("set_start_year <= ?", end_date).all if (start_date && end_date)
+      end_date_films = @results.where("set_end_year >= ?", start_date).where("set_end_year <= ?", end_date).all if (start_date && end_date)
     end
-
-
+    @results = end_date_films + start_date_films
     # END OF CODE
 
     movies = []
