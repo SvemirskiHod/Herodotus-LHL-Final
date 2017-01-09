@@ -7,6 +7,9 @@ class AdvSearchesController < ApplicationController
     set_start_year = params["date"] if params["date"] != ''
     location = params["location"] if params["location"] != ''
     era = params["era"] if params["era"] != ''
+    start_date = params["start_date"] if params["start_date"] != ''
+    end_date = params["end_date"] if params["end_date"] != ''
+
 
     @results = Movie.all
     @results = @results.where("lower(title) LIKE ?", "%#{title.downcase}%").all if title
@@ -21,6 +24,17 @@ class AdvSearchesController < ApplicationController
     else
       @results = @results.where("set_start_year >= ?", set_start_year).where("set_end_year <= ?", set_start_year).all if set_start_year
     end
+
+
+    # CODE THAT RETURNS FILMS IN A SPECIFIC RANGE
+    if (era == 'AD')
+      @results = @results.where("set_start_year >= ?", start_date).where("set_start_year <= ?", end_date).all if (start_date && end_date)
+    else
+      @results = @results.where("set_start_year <= ?", start_date).where("set_start_year >= ?", end_date).all if (start_date && end_date)
+    end
+
+
+    # END OF CODE
 
     movies = []
     @results.each do |film|
@@ -50,6 +64,7 @@ class AdvSearchesController < ApplicationController
     bcArray = bcArray.sort { |a,b| b.set_start_year.to_i <=> a.set_start_year.to_i }
     @results = bcArray + adArray
     # END OF CODE
+
     render json: @results
 
   end
