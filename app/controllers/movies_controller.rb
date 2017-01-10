@@ -15,7 +15,7 @@ class MoviesController < ApplicationController
     when 'Vintage'
       @movies = @movies.where("year <= ?", 1970).all
     when 'Before Common Era'
-      @movies = @movies.where("start_ad_bc = 'BC'").all
+      @movies = @movies.where("start_ad_bc = ?", "BCE").all
     when 'Animation'
       @movies = @movies.where("genre LIKE ?", "%Animation%").all
     when 'World War 2'
