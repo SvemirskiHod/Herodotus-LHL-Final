@@ -65,7 +65,9 @@ class AdvSearchesController < ApplicationController
 
     adArray = adArray.sort { |a,b| a.set_start_year.to_i <=> b.set_start_year.to_i }
     bcArray = bcArray.sort { |a,b| b.set_start_year.to_i <=> a.set_start_year.to_i }
-    @results = bcArray + adArray
+    if (bcArray.length > 0 || adArray.length > 0)
+      @results = bcArray + adArray
+    end
     # END OF CODE
 
     render json: @results
