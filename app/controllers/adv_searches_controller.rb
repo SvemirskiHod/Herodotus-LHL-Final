@@ -35,7 +35,9 @@ class AdvSearchesController < ApplicationController
       start_date_films = @results.where("set_start_year >= ?", start_date).where("set_start_year <= ?", end_date).all if (start_date && end_date)
       end_date_films = @results.where("set_end_year >= ?", start_date).where("set_end_year <= ?", end_date).all if (start_date && end_date)
     end
-    @results = end_date_films + start_date_films
+    if (start_date_films.length > 0 || end_date_films.length > 0)
+      @results = end_date_films + start_date_films
+    end
     # END OF CODE
 
     movies = []
