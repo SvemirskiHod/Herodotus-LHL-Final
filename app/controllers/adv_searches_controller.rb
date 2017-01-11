@@ -70,7 +70,7 @@ class AdvSearchesController < ApplicationController
     end
     # END OF CODE
 
-    render json: @results
+    render json: @results.uniq
 
   end
 end
