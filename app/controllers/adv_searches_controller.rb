@@ -51,6 +51,7 @@ class AdvSearchesController < ApplicationController
       @results = movies
     end
 
+
     # CODE THAT PUTS THE RESULTS IN CHRONOLOGICAL ORDER
     bcArray = []
     adArray = []
