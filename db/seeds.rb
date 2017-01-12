@@ -327,27 +327,27 @@ Comment.create!([
   user: @user1,
   username: @user1.username,
   movie_id: 1,
-  comment: 'this movie sucks ass 11111111111!!!!!!!111111'},
+  comment: 'I really wanna see this movie!'},
   {
-  user: @user1,
+  user: @user2,
   username: @user1.username,
   movie_id: 1,
-  comment: '2nd comment'},
+  comment: 'too silent for me'},
   {
-  user: @user1,
+  user: @user3,
   username: @user1.username,
   movie_id: 1,
-  comment: '3rd comment'},
+  comment: 'OMFG Adam Driver like soooo hott'},
 ])
 
 Note.create!({
   user: @user1,
   movie_id: 1,
-  note: 'never going to watch this movie'
+  note: 'probably never going to watch this movie'
 })
 
 Note.create!({
-  user: @user2,
+  user: @user1,
   movie_id: 1,
   note: 'this movie is pretty good'
 })
@@ -355,5 +355,5 @@ Note.create!({
 Note.create!({
   user: @user1,
   movie_id: 1,
-  note: 'friend says this is good. maybe i should watch it'
+  note: 'friend just told me that this was good. maybe i should watch it?'
 })

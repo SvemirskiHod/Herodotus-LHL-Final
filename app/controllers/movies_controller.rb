@@ -27,7 +27,7 @@ class MoviesController < ApplicationController
     when 'Set in Middle Ages'
       @movies = @movies.where("set_start_year >= ?", 500).where("set_start_year <= ?", 1500).all
     when 'Films set in this Millennium'
-      @movies = @movies.where("year >= ?", 2000).all
+      @movies = @movies.where("start_ad_bc = ? AND set_start_year >= ?", "CE", 2000).all
     when 'Critically Acclaimed Films'
       @movies = @movies.where("imdbrating >= ?", 8).all
     when 'Set in Ancient Rome or Greece'
