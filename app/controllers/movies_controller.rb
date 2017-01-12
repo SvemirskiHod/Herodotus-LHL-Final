@@ -16,7 +16,7 @@ class MoviesController < ApplicationController
       @movies = @movies.where("year <= ?", 1970).all
     when 'Films Set Before the Common Era (BCE)'
       @movies = @movies.where("start_ad_bc = ?", "BCE").all
-    when 'nimated Films'
+    when 'Animated Films'
       @movies = @movies.where("genre LIKE ?", "%Animation%").all
     when 'Films Set During WWII'
       @movies = @movies.where("genre LIKE ?", "%War%").all
