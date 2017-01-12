@@ -12,15 +12,32 @@ class MoviesController < ApplicationController
       @movies = @movies.where("genre LIKE ?", "%Biography%").all
     when 'Set in Japan'
       @movies = @movies.where("setting_location LIKE ?", "%Japan%").all
-    when 'Vintage'
+    when 'Vintage (released before 1970)'
       @movies = @movies.where("year <= ?", 1970).all
-    when 'Before Common Era'
+    when 'Films Set Before the Common Era (BCE)'
       @movies = @movies.where("start_ad_bc = ?", "BCE").all
-    when 'Animation'
+    when 'nimated Films'
       @movies = @movies.where("genre LIKE ?", "%Animation%").all
-    when 'World War 2'
+    when 'Films Set During WWII'
       @movies = @movies.where("genre LIKE ?", "%War%").all
       @movies = @movies.where("set_start_year >= ?", 1939).where("set_end_year <= ?", 1945).all
+    when 'Set in China'
+      @movies = @movies.where("setting_location LIKE ?", "%China%").all
+    when 'Recent Releases'
+      @movies = @movies.where("year >= ?", 2012).all
+    when 'Set in Middle Ages'
+      @movies = @movies.where("set_start_year >= ?", 500).where("set_start_year <= ?", 1500).all
+    when 'Films set in this Millennium'
+      @movies = @movies.where("year >= ?", 2000).all
+    when 'Critically Acclaimed Films'
+      @movies = @movies.where("imdbrating >= ?", 8).all
+    when 'Set in Ancient Rome or Greece'
+      @movies = @movies.where(["setting_location LIKE ? OR setting_location LIKE ? OR setting_location LIKE ?", "%Rome%", "%Italy%", "%Greece%"]).all#.where(["start_ad_bc = ? AND set_start_year <= ?", "BCE", 800]).where(["start_ad_bc = ? AND set_start_year = ?", 'BCE', 0]).all#where(["start_ad_bc = ? AND set_start_year <= ?", "CE", 300]).all
+      movies_in_BCE = []
+      movies_in_CE = []
+      movies_in_BCE = @movies.where(["start_ad_bc = ? AND set_start_year <= ? AND set_start_year >= ?", "BCE", 800, 0]).all
+      movies_in_CE = @movies.where(["start_ad_bc = ? AND set_start_year <= ? AND set_start_year >= ?", "CE", 300, 0]).all
+      @movies = movies_in_CE + movies_in_BCE
     end
 
     render json: @movies
