@@ -330,12 +330,12 @@ Comment.create!([
   comment: 'I really wanna see this movie!'},
   {
   user: @user2,
-  username: @user1.username,
+  username: @user2.username,
   movie_id: 1,
   comment: 'too silent for me'},
   {
   user: @user3,
-  username: @user1.username,
+  username: @user3.username,
   movie_id: 1,
   comment: 'OMFG Adam Driver like soooo hott'},
 ])
