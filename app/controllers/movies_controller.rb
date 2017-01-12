@@ -19,7 +19,6 @@ class MoviesController < ApplicationController
     when 'Animated Films'
       @movies = @movies.where("genre LIKE ?", "%Animation%").all
     when 'Films Set During WWII'
-      @movies = @movies.where("genre LIKE ?", "%War%").all
       @movies = @movies.where("set_start_year >= ?", 1939).where("set_end_year <= ?", 1945).all
     when 'Set in China'
       @movies = @movies.where("setting_location LIKE ?", "%China%").all
