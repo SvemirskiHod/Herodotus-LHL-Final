@@ -21,7 +21,7 @@ class AdvSearchesController < ApplicationController
     if (era == 'BCE')
       @results = @results.where("set_start_year = #{set_start_year}").all if set_start_year
     else
-      @results = @results.where("set_start_year >= ?", set_start_year).where("set_end_year <= ?", set_start_year).all if set_start_year
+      @results = @results.where("set_start_year <= ?", set_start_year).where("set_end_year >= ?", set_start_year).all if set_start_year
     end
 
     # CODE THAT RETURNS FILMS IN A SPECIFIC RANGE - HERE COMES THE CHEESE
