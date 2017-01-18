@@ -14,7 +14,7 @@ module Herodotus
     # config.web_console.whitelisted_ips = '10.0.2.2'
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins '*'
+        origins 'https://herodotus-final.herokuapp.com'
         resource '*', :headers => :any, :methods => [:get, :post, :delete, :put, :options]
       end
     end
