@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   end
 
   resources :titles, only: [:index, :show]
-  resources :adv_searches, only: [:index, :show]
+  resources :searches, only: [:index, :show]
 end

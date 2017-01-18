@@ -1,4 +1,4 @@
-class AdvSearchesController < ApplicationController
+class SearchesController < ApplicationController
   def index  # Will handle advanced searches
 
     title = params["title"] if params["title"] != ''
