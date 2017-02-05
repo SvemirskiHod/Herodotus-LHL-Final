@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170101233425) do
+ActiveRecord::Schema.define(version: 20170205111404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20170101233425) do
     t.string   "setting_location"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.string   "youtube_id"
   end
 
   create_table "notes", force: :cascade do |t|
