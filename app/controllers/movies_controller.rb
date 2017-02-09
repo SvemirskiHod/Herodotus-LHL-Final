@@ -73,6 +73,7 @@ class MoviesController < ApplicationController
       end_ad_bc: params[:endADBC],
       set_end_year_accurate: params[:endAccurate],
       setting_location: params[:setting],
+      youtube_id: params[:youtube_id]
     )
   end
 end
